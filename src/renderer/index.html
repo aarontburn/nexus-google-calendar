@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self';">
+
+    <link rel="stylesheet" href="./styles.css">
+    <script defer src="./renderer.js"></script>
+
+</head>
+
+
+<body>
+    <div id="app">
+
+        <webview src="https://calendar.google.com/calendar/u/0/r" style="height: 100%;" allowpopups
+            partition="persist:{EXPORTED_MODULE_ID}"
+            userAgent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.6998.179 Safari/537.36">
+        </webview>
+    </div>
+</body>
+
+</html>
