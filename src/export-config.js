@@ -1,5 +1,5 @@
 module.exports = {
-    excluded: [],
+    excluded: ["electron.ts"],
     included: [],
     build: {
         name: "Google Calendar",

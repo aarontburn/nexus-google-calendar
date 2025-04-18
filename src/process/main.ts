@@ -1,4 +1,5 @@
 import { Process } from "@nexus/nexus-module-builder"
+import { session } from "electron";
 import * as path from "path";
 
 // These is replaced to the ID specified in export-config.js during export. DO NOT MODIFY.
@@ -15,18 +16,24 @@ export default class GoogleCalendarProcess extends Process {
             paths: {
                 iconPath: path.normalize(__dirname + "/google-calendar-icon.png"),
                 htmlPath: path.join(__dirname, "../renderer/index.html"),
-            },
-            httpOptions: {
-                partition: `persist:${MODULE_ID}`,
-                userAgent: `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.6998.179 Safari/537.36`
             }
         });
+
+    }
+
+    public async initialize(): Promise<void> {
+        this.sendToRenderer("user-agent", {
+            userAgent: session.fromPartition(`persist:${MODULE_ID}`).getUserAgent().replace(/Electron\/*/,''),
+            partition: `persist:${MODULE_ID}`
+        })
+
     }
 
 
     public async handleEvent(eventType: string, data: any[]): Promise<any> {
         switch (eventType) {
             case "init": {
+                this.initialize()
                 // do something?
                 break;
             }
