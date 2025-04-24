@@ -23,7 +23,7 @@ export default class GoogleCalendarProcess extends Process {
 
     public async initialize(): Promise<void> {
         this.sendToRenderer("user-agent", {
-            userAgent: session.fromPartition(`persist:${MODULE_ID}`).getUserAgent().replace(/Electron\/*/,''),
+            userAgent: session.fromPartition(`persist:${MODULE_ID}`).getUserAgent().replace(/Electron\/*/, ''),
             partition: `persist:${MODULE_ID}`
         })
 
@@ -34,7 +34,10 @@ export default class GoogleCalendarProcess extends Process {
         switch (eventType) {
             case "init": {
                 this.initialize()
-                // do something?
+                break;
+            }
+            default: {
+                console.warn(`[${MODULE_NAME}] Uncaught message: ${eventType} | ${data}`)
                 break;
             }
         }
