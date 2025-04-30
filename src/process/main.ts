@@ -26,7 +26,6 @@ export default class GoogleCalendarProcess extends Process {
             userAgent: session.fromPartition(`persist:${MODULE_ID}`).getUserAgent().replace(/Electron\/*/, ''),
             partition: `persist:${MODULE_ID}`
         })
-
     }
 
 
