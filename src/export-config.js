@@ -3,7 +3,7 @@ module.exports = {
     included: [],
     build: {
         name: "Google Calendar",
-        id: "aarontburn.Google_Calendar_Client",
+        id: "aarontburn.Google_Calendar",
         process: "./process/main.js",
         replace: [
             {
