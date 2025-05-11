@@ -1,11 +1,15 @@
 {
     "name": "Google Calendar",
     "id": "aarontburn.Google_Calendar",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "author": "aarontburn",
     "description": "A Google Calendar module for Nexus.",
     "platforms": [],
     "link": "https://github.com/aarontburn/nexus-google-calendar",
+    "git-latest": {
+        "git-username": "aarontburn",
+        "git-repo-name": "nexus-google-calendar"
+    },
     "build": {
         "build-version": 2,
         "process": "./process/main.js",
@@ -26,8 +30,7 @@
                 "from": "{EXPORTED_MODULE_NAME}",
                 "to": "%name%",
                 "at": [
-                    "./process/main.ts",
-                    "./module-info.json"
+                    "./process/main.ts"
                 ]
             }
         ]
