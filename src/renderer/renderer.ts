@@ -1,7 +1,12 @@
 // Sends information to the the process.
 const sendToProcess = (eventType: string, ...data: any[]): Promise<void> => {
-    return window.parent.ipc.send(window, eventType, data);
+    return window.ipc.sendToProcess(eventType, data);
 }
+
+window.ipc.onProcessEvent((eventType: string, data: any[]) => {
+    handleEvent(eventType, data);
+});
+
 
 // Handle events from the process.
 const handleEvent = (eventType: string, data: any[]) => {
@@ -29,11 +34,6 @@ const handleEvent = (eventType: string, data: any[]) => {
         }
     }
 }
-
-// Attach event handler.
-window.parent.ipc.on(window, (eventType: string, data: any[]) => {
-    handleEvent(eventType, data);
-});
 
 
 // Instruct the module process to initialize once the renderer is ready.
